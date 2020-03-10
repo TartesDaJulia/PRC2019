@@ -1,0 +1,22 @@
+select distinct ?name ?gender ?birthDate where 
+{
+  ?swim a dbo:Swimmer.
+  ?swim foaf:name ?name.
+  ?swim foaf:gender ?gender.
+  ?swim dbo:birthDate ?birthDate
+
+}
+
+select distinct ?name ?gender ?birthDate ?birthPlace ?deathDate ?deathPlace ?abstract where 
+{
+  ?swim a dbo:Swimmer.
+  ?swim foaf:name ?name.
+  ?swim foaf:gender ?gender.
+  ?swim dbo:birthDate ?birthDate.
+  OPTIONAL {?swim dbo:birthPlace ?birthPlace.}
+  OPTIONAL {?swim dbo:deathDate ?deathDate.}
+  OPTIONAL {?swim dbo:deathPlace ?deathPlace.}
+  OPTIONAL {?swim dbo:abstract ?abstract.}
+  FILTER langMatches(lang(?abstract),'en')
+}
+
