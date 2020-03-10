@@ -1,0 +1,229 @@
+@prefix : <http://www.henrique.org/coronaex2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.henrique.org/coronaex2> .
+
+<http://www.henrique.org/coronaex2> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.henrique.org/coronaex2#compra
+:compra rdf:type owl:ObjectProperty ;
+        owl:inverseOf :éCompradoPor ;
+        rdfs:domain :Cliente ;
+        rdfs:range :Produto .
+
+
+###  http://www.henrique.org/coronaex2#vende
+:vende rdf:type owl:ObjectProperty ;
+       owl:inverseOf :éVendidoPor ;
+       rdfs:domain :Loja ;
+       rdfs:range :Produto .
+
+
+###  http://www.henrique.org/coronaex2#éCompradoPor
+:éCompradoPor rdf:type owl:ObjectProperty ;
+              rdfs:domain :Produto ;
+              rdfs:range :Cliente .
+
+
+###  http://www.henrique.org/coronaex2#éVendidoPor
+:éVendidoPor rdf:type owl:ObjectProperty ;
+             rdfs:domain :Produto ;
+             rdfs:range :Loja .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.henrique.org/coronaex2#codigo
+:codigo rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Produto .
+
+
+###  http://www.henrique.org/coronaex2#email
+:email rdf:type owl:DatatypeProperty .
+
+
+###  http://www.henrique.org/coronaex2#nome
+:nome rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.henrique.org/coronaex2#Cliente
+:Cliente rdf:type owl:Class ;
+         owl:disjointWith :Produto .
+
+
+###  http://www.henrique.org/coronaex2#CompraVenda
+:CompraVenda rdf:type owl:Class .
+
+
+###  http://www.henrique.org/coronaex2#Loja
+:Loja rdf:type owl:Class .
+
+
+###  http://www.henrique.org/coronaex2#LojaGrande
+:LojaGrande rdf:type owl:Class ;
+            rdfs:subClassOf :Loja .
+
+
+###  http://www.henrique.org/coronaex2#Produto
+:Produto rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.henrique.org/coronaex2#A
+:A rdf:type owl:NamedIndividual ,
+            :Produto ;
+   :codigo "1"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#Aldi
+:Aldi rdf:type owl:NamedIndividual ,
+               :Loja ;
+      :vende :A ,
+             :B ;
+      :email "aldi@mail.com"^^xsd:string ;
+      :nome "Aldi"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#B
+:B rdf:type owl:NamedIndividual ;
+   :codigo "2"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#C
+:C rdf:type owl:NamedIndividual ;
+   :codigo "3"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#Continente
+:Continente rdf:type owl:NamedIndividual ,
+                     :Loja ;
+            :vende :C ,
+                   :D ;
+            :email "continente@mail.com"^^xsd:string ;
+            :nome "Continente"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#D
+:D rdf:type owl:NamedIndividual ;
+   :codigo "4"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#E
+:E rdf:type owl:NamedIndividual ;
+   :codigo "5"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#F
+:F rdf:type owl:NamedIndividual ;
+   :codigo "6"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#G
+:G rdf:type owl:NamedIndividual ;
+   :codigo "7"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#H
+:H rdf:type owl:NamedIndividual ;
+   :codigo "8"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#I
+:I rdf:type owl:NamedIndividual ;
+   :codigo "9"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#Intermarche
+:Intermarche rdf:type owl:NamedIndividual ,
+                      :Loja ;
+             :vende :E ,
+                    :F ;
+             :email "intermarche@mail.com"^^xsd:string ;
+             :nome "Intermarché"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#J
+:J rdf:type owl:NamedIndividual ;
+   :codigo "10"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#Lidl
+:Lidl rdf:type owl:NamedIndividual ,
+               :Loja ;
+      :vende :G ,
+             :H ;
+      :email "lidl@mail.com"^^xsd:string ;
+      :nome "Lidl"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#Pingo_Doce
+:Pingo_Doce rdf:type owl:NamedIndividual ,
+                     :Loja ;
+            :vende :I ,
+                   :J ;
+            :email "pingodoce@mail.com"^^xsd:string ;
+            :nome "Pingo Doce"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#antonio
+:antonio rdf:type owl:NamedIndividual ,
+                  :Cliente ;
+         :compra :A ,
+                 :B ;
+         :email "antonio@mail.com"^^xsd:string ;
+         :nome "António"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#barbara
+:barbara rdf:type owl:NamedIndividual ,
+                  :Cliente ;
+         :compra :C ,
+                 :D ;
+         :email "barbara@mail.com"^^xsd:string ;
+         :nome "Bárbara"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#catarina
+:catarina rdf:type owl:NamedIndividual ,
+                   :Cliente ;
+          :compra :E ,
+                  :F ;
+          :email "catarina@mail.com"^^xsd:string ;
+          :nome "Catarina"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#daniel
+:daniel rdf:type owl:NamedIndividual ,
+                 :Cliente ;
+        :compra :G ,
+                :H ;
+        :email "daniel@mail.com"^^xsd:string ;
+        :nome "Daniel"^^xsd:string .
+
+
+###  http://www.henrique.org/coronaex2#eduardo
+:eduardo rdf:type owl:NamedIndividual ,
+                  :Cliente ;
+         :compra :I ,
+                 :J ;
+         :email "eduardo@mail.com"^^xsd:string ;
+         :nome "Eduardo"^^xsd:string .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

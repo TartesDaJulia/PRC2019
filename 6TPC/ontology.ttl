@@ -1,0 +1,29 @@
+@prefix ex:<http://www.exemple.org>.
+@prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd:<http://www.w3.org/2001/XMLSchema#>.
+ex:A rdf:type rdfs:Class .
+ex:B rdf:type rdfs:Class.
+ex:C rdf:type rdfs:Class.
+ex:B rdfs:subClassOf ex:A .
+ex:C rdfs:subClassOf ex:B .
+
+ex:P1 rdf:type rdf:Property .
+ex:P1 rdfs:domain ex:A .
+ex:P1 rdfs:range ex:B .
+ex:P2 rdf:type rdf:Property.
+ex:P2 rdfs:domain ex:B .
+ex:P2 rdfs:range ex:C .
+ex:P2 rdfs:subPropertyOf ex:P1 .
+ex:P3 rdf:type rdf:Property .
+ex:P3 rdfs:domain ex:C .
+ex:P3 rdf:range xsd:integer .
+ex:P3 rdfs:subPropertyOf ex:P2 .
+
+ex:a rdf:type ex:A .
+ex:b rdf:type ex:B .
+ex:c1 rdf:type ex:C .
+ex:c2 rdf:type ex:C .
+ex:a ex:P1 ex:b .
+ex:b ex:P2 ex:c1 .
+ex:c1 ex:P3 xsd:integer.

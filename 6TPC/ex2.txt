@@ -1,0 +1,17 @@
+1.Que lojas vendem o produto A?
+
+SELECT ?l WHERE {
+	?l a <http://www.henrique.org/coronaex2#Loja> .
+    ?p a <http://www.henrique.org/coronaex2#Produto> .
+    ?l <http://www.henrique.org/coronaex2#vende> ?p.
+} 
+
+2. Que produtos sao comprados pelo cliente X?
+
+SELECT ?p WHERE {
+	?c a <http://www.henrique.org/coronaex2#Cliente> .
+    ?c <http://www.henrique.org/coronaex2#nome> "X" .
+    ?c <http://www.henrique.org/coronaex2#compra> ?p
+} 
+
+3. Quem sao os pontenciais clientes da loja Y?
