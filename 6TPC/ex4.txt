@@ -30,6 +30,13 @@ SELECT (count(distinct ?poke) as ?c) WHERE {
 
 4. Quais são os pokémons para os quais pode evoluir o pokémon de nome "Eevee"?
 
+PREFIX : <http://www.chalkos.net/ontologies/2015/pokemon#>
+select ?e where {
+    ?p a :Pokemon .
+	?p :Name "Eevee"@en .
+    ?p :EvolvesFrom+/:EvolvesTo+/:Name ?e
+    filter(lang(?e) = 'en') .
+}
 
 5. Quantos tipos diferentes de pokémons exitem na ontologia?
 
@@ -42,3 +49,23 @@ SELECT (count(distinct ?type) as ?c) WHERE {
 
 6. Quantos pokémons existem associados a cada tipo?
 
+select ?tipo (count(?pokemon) as ?pokemons) where {
+    ?pokemon a pokemon:Pokemon .
+    ?pokemon pokemon:HasType ?tp .
+    ?tp pokemon:Name ?tipo .
+    filter(lang(?tipo) = 'en') .
+} group by ?tipo
+order by desc(?pokemons)
+
+OU
+
+PREFIX pokemon: <http://www.chalkos.net/ontologies/2015/pokemon#>
+select ?nome where {
+    ?eevee a pokemon:Pokemon .
+    ?eevee pokemon:Name "Eevee"@en .
+    ?eevee pokemon:EvolvesFrom ?evo . 
+    ?evo pokemon:EvolvesTo ?evolution .
+    ?evolution a pokemon:Pokemon .
+    ?evolution pokemon:Name ?nome .
+    filter(lang(?nome) = 'en') 
+}
