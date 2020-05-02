@@ -1,0 +1,68 @@
+Queries em SPARQL
+ 
+	1.Tios
+	
+select ?person ?uncle where { 
+    ?parent :hasChild ?person.
+    ?parent :hasSibling ?uncle
+    filter(?parent != ?uncle)
+}
+
+
+	2.Primos
+
+select ?person ?cousin where { 
+    ?parent :hasChild ?person.
+    ?parent :hasSibling ?uncle.
+    ?uncle :hasChild ?cousin.
+    filter(?parent != ?uncle)
+}
+
+	
+	3.Acestrais
+	
+select ?person ?parent ?uncles ?grandParent ?grandGrandParent ?grandUncles ?grandGrandGrandParent ?grandGrandUncles where { 
+    ?person :hasParent ?parent.
+    ?parent :hasSibling ?uncles.
+	?parent :hasParent ?grandParent.
+    ?grandParent :hasSibling ?grandUncles .
+    ?grandParent :hasParent ?grandGrandParent.
+    ?grandGrandParent :hasSibling ?grandGrandUncles .
+    ?grandGrandParent :hasParent ?grandGrandGrandParent.
+    filter(?parent != ?uncles)
+    filter(?grandParent != ?grandUncles)
+    filter(?grandGrandParent != ?grandGrandUncles)
+}
+	
+	4.Descendentes
+select ?person ?child ?grandChild ?grandGrandChild ?grandGrandGrandChild ?grandGrandGrandGrandChild where { 
+    ?person :hasChild ?child.
+    ?child :hasChild ?grandChild.
+    ?grandChild :hasChild ?grandGrandChild.
+    ?grandGrandChild :hasChild ?grandGrandGrandChild.
+    ?grandGrandGrandChild :hasChild ?grandGrandGrandGrandChild.
+}
+	
+	5.Cunhados
+	
+select ?person ?inlaw where { 
+    ?person :hasSibling ?sibling.
+    ?sibling :hasChild ?child.
+    ?child :hasParent ?inlaw.
+    filter(?inlaw != ?sibling)
+    filter(?person != ?sibling)
+}
+	
+	6.Sogro/Sogra
+	
+	select ?person ?parentInlaw where { 
+    ?person :hasSibling ?sibling.
+    ?sibling :hasChild ?child.
+    ?child :hasParent ?inlaw.
+    ?inlaw :hasParent ?parentInlaw.
+    filter(?inlaw != ?sibling)
+    filter(?person != ?sibling)
+}
+	
+Desafio
+	Criar estas relacoes na ontologia
