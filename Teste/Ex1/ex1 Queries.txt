@@ -1,0 +1,27 @@
+Cria as seguinte queries SPARQL sobre a ontologia que especificaste:
+
+    Quais os pratos que levam camarão? ------------------------------------
+	
+	select ?dish where { 
+		?dish :ingredients :camarao .
+	}
+
+    Que sobremesas existem num determinado menu? ------------------------------------
+	
+	select ?dessert where { 
+		?menu a :Menu  .
+		?menu :dessert ?dessert .
+	}
+
+	
+    Quais os pratos que não incluem "molho de amendoim"? ------------------------------------
+
+	select ?noPeanut where { 
+		?noPeanut a :Course  .
+		?noPeanut :ingredients ?peanuts.
+		FILTER(
+			!EXISTS {
+				?noPeanut :ingredients :molho_de_amendoim .
+			}
+		)
+	}

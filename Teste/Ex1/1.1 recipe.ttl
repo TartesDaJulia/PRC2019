@@ -1,0 +1,830 @@
+@prefix : <http://purl.org/ontology/fo/> .
+@prefix v: <http://rdf.data-vocabulary.org/#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix fo: <http://purl.org/ontology/fo/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcmit: <http://purl.org/dc/dcmitype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dctypes: <http://purl.org/dc/dcmitype/> .
+@prefix provenance: <http://www.bbc.co.uk/ontologies/provenance/> .
+@base <http://purl.org/ontology/fo/> .
+
+<http://purl.org/ontology/fo/> rdf:type owl:Ontology ;
+                                owl:versionIRI <http://purl.org/ontology/fo/1.1> ;
+                                owl:imports dc: ,
+                                            dcterms: ,
+                                            provenance: ,
+                                            vs: ,
+                                            foaf: ;
+                                dc:date "Date: 2014/03/18 16:30:00 " ;
+                                dcterms:created "2011-07-08"^^xsd:date ;
+                                dcterms:license <http://creativecommons.org/licenses/by/4.0#id> ;
+                                dcterms:title "Food Ontology"@en-gb ;
+                                provenance:canonicalLocation "https://repo.dev.bbc.co.uk/services/linked-data/ontologies/domain/kl/food/food-ontology-1-1.ttl"^^xsd:string ;
+                                provenance:changeReason "Fix a typo of occassion"^^xsd:string ;
+                                provenance:public "true"^^xsd:boolean ;
+                                provenance:slug "fo"^^xsd:string ;
+                                provenance:version "1.1"^^xsd:double ;
+                                rdfs:comment "A simple vocabulary for describing recipes, ingredients, menus and diets."@en-gb ;
+                                rdfs:label "Food Ontology"^^xsd:string ;
+                                owl:priorVersion <http://purl.org/ontology/fo/1.0> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.bbc.co.uk/ontologies/provenance/canonicalLocation
+provenance:canonicalLocation rdf:type owl:AnnotationProperty .
+
+
+###  http://www.bbc.co.uk/ontologies/provenance/changeReason
+provenance:changeReason rdf:type owl:AnnotationProperty .
+
+
+###  http://www.bbc.co.uk/ontologies/provenance/public
+provenance:public rdf:type owl:AnnotationProperty .
+
+
+###  http://www.bbc.co.uk/ontologies/provenance/slug
+provenance:slug rdf:type owl:AnnotationProperty .
+
+
+###  http://www.bbc.co.uk/ontologies/provenance/version
+provenance:version rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/ontology/fo/at_its_best
+fo:at_its_best rdf:type owl:ObjectProperty ;
+               rdfs:domain fo:Food ;
+               rdfs:range fo:Season ;
+               rdfs:comment "The at its best property tells us in what season a particular food is at its best."@en-gb ;
+               rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+               rdfs:label "at its best"@en-gb ;
+               vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/canape
+fo:canape rdf:type owl:ObjectProperty ;
+          rdfs:domain fo:Menu ;
+          rdfs:range fo:Recipe ;
+          rdfs:comment "The canape property relates a menu to a recipe that may be served as a canape."@en-gb ;
+          rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+          rdfs:label "canape"@en-gb ;
+          vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/cuisine
+fo:cuisine rdf:type owl:ObjectProperty ;
+           rdfs:domain fo:Recipe ;
+           rdfs:range fo:Cuisine ;
+           rdfs:comment "The cuisine property classifies a recipe as being an example of that cuisine."@en-gb ;
+           rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+           rdfs:label "cuisine"@en-gb ;
+           vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/dessert
+fo:dessert rdf:type owl:ObjectProperty ;
+           rdfs:domain fo:Menu ;
+           rdfs:range fo:Recipe ;
+           rdfs:comment "The dessert property relates a menu to a recipe that may be served as a dessert."@en-gb ;
+           rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+           rdfs:label "dessert"@en-gb ;
+           vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/diet
+fo:diet rdf:type owl:ObjectProperty ;
+        rdfs:domain fo:Recipe ;
+        rdfs:range fo:Diet ;
+        rdfs:comment "The diet property relates a recipe to a diet it may be suitable for."@en-gb ;
+        rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+        rdfs:label "diet"@en-gb ;
+        vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/food
+fo:food rdf:type owl:ObjectProperty ;
+        rdfs:domain fo:Ingredient ;
+        rdfs:range fo:Food ;
+        rdfs:comment "The food property relates an ingredient to the food that is required."@en-gb ;
+        rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+        rdfs:label "food"@en-gb ;
+        vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/ingredients
+fo:ingredients rdf:type owl:ObjectProperty ;
+               rdfs:range fo:IngredientList ;
+               rdfs:comment "The ingredients property relates a recipe or recipe stage to an ingredient list."@en-gb ;
+               rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+               rdfs:label "ingredients"@en-gb ;
+               vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/main_course
+fo:main_course rdf:type owl:ObjectProperty ;
+               rdfs:domain fo:Menu ;
+               rdfs:range fo:Recipe ;
+               rdfs:comment "The main course property relates a menu to a recipe that may be served as a main course."@en-gb ;
+               rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+               rdfs:label "main course"@en-gb ;
+               vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/method
+fo:method rdf:type owl:ObjectProperty ;
+          rdfs:range fo:Method ;
+          rdfs:comment "The method property relates a recipe or stage to the method used to make it."@en-gb ;
+          rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+          rdfs:label "method"@en-gb ;
+          vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/occasion
+fo:occasion rdf:type owl:ObjectProperty ;
+            rdfs:domain fo:Recipe ;
+            rdfs:range fo:Occasion ;
+            rdfs:comment "The occassion property relates a recipe to an occasion it may be appropriate for."@en-gb ;
+            rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+            rdfs:label "occassion"@en-gb ;
+            vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/produces
+fo:produces rdf:type owl:ObjectProperty ;
+            rdfs:domain fo:Recipe ;
+            rdfs:range fo:Food ;
+            rdfs:comment "The produces property relates a recipe to the food it produces."@en-gb ;
+            rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+            rdfs:label "produces"@en-gb ;
+            vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/required_technique
+fo:required_technique rdf:type owl:ObjectProperty ;
+                      rdfs:range fo:Technique ;
+                      rdfs:comment "The required technique property indicates that a particular technique is required in order to complete a recipe, method or step."@en-gb ;
+                      rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+                      rdfs:label "required technique"@en-gb ;
+                      vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/serve_as
+fo:serve_as rdf:type owl:ObjectProperty ;
+            rdfs:domain fo:Recipe ;
+            rdfs:range fo:Course ;
+            rdfs:comment "The serve as property relates a recipe to the course in a meal that it may be served as."@en-gb ;
+            rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+            rdfs:label "serve as"@en-gb ;
+            vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/shopping_category
+fo:shopping_category rdf:type owl:ObjectProperty ;
+                     rdfs:domain fo:Food ;
+                     rdfs:range fo:ShoppingCategory ;
+                     rdfs:comment "The shopping category property relates a food to the shopping category where that food is likely to be found when shopping for it."@en-gb ;
+                     rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+                     rdfs:label "shopping category"@en-gb ;
+                     vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/side_dish
+fo:side_dish rdf:type owl:ObjectProperty ;
+             rdfs:domain fo:Menu ;
+             rdfs:range fo:Recipe ;
+             rdfs:comment "The side dish property relates a menu to a recipe that may be served as a side dish."@en-gb ;
+             rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+             rdfs:label "side dish"@en-gb ;
+             vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/stages
+fo:stages rdf:type owl:ObjectProperty ;
+          rdfs:domain fo:Recipe ;
+          rdfs:range fo:StageSequence ;
+          rdfs:comment "The stages property relates a recipe to the sequence of stages it contains."@en-gb ;
+          rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+          rdfs:label "stages"@en-gb ;
+          vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/starter
+fo:starter rdf:type owl:ObjectProperty ;
+           rdfs:domain fo:Menu ;
+           rdfs:range fo:Recipe ;
+           rdfs:comment "The starter property relates a menu to a recipe that may be served as a starter."@en-gb ;
+           rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+           rdfs:label "starter"@en-gb ;
+           vs:term_status "testing" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/ontology/fo/imperial_quantity
+fo:imperial_quantity rdf:type owl:DatatypeProperty ;
+                     rdfs:domain fo:Ingredient ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "A metric quantity provides a value and imperial unit in a human readable string for use in measuring out an ingredient."@en-gb ;
+                     rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+                     rdfs:label "imperial quantity"@en-gb ;
+                     vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/instruction
+fo:instruction rdf:type owl:DatatypeProperty ;
+               rdfs:domain fo:Step ;
+               rdfs:range xsd:string ;
+               rdfs:comment "An instruction provides the human-readable text associated with a step in the method for a recipe."@en-gb ;
+               rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+               rdfs:label "instruction"@en-gb ;
+               vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/metric_quantity
+fo:metric_quantity rdf:type owl:DatatypeProperty ;
+                   rdfs:domain fo:Ingredient ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "A metric quantity provides a value and metric unit in a human readable string for use in measuring out an ingredient."@en-gb ;
+                   rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+                   rdfs:label "metric quantity"@en-gb ;
+                   vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/quantity
+fo:quantity rdf:type owl:DatatypeProperty ;
+            rdfs:domain fo:Ingredient ;
+            rdfs:range xsd:nonNegativeInteger ;
+            rdfs:comment "A quantity provides a non-negative integer quantity that can be used as a measure of the food stuff for the ingredient."@en-gb ;
+            rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+            rdfs:label "quantity"@en-gb ;
+            vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/serves
+fo:serves rdf:type owl:DatatypeProperty ;
+          rdfs:domain fo:Recipe ;
+          rdfs:range xsd:string ;
+          rdfs:comment "The server property indicates what the recipe is intended to serve, this is often a human readable integer range such as '6-8'."@en-gb ;
+          rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+          rdfs:label "serves"@en-gb ;
+          vs:term_status "testing" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/dcmitype/Collection
+dctypes:Collection rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/fo/Collection
+fo:Collection rdf:type owl:Class ;
+              rdfs:subClassOf dctypes:Collection ;
+              rdfs:comment "A Collection is a group of recipes that are brought together because they have something in common. Some collections may result from automated queries such as all recipes that share a particular ingredient, other collections may be the result of editorial selection."@en-gb ;
+              rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+              rdfs:label "Collection"@en-gb ;
+              vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Course
+fo:Course rdf:type owl:Class ;
+          rdfs:comment "A Course is the sequence of a dish within a meal. For example a basic dinner party may consists of Starter, Main and Dessert courses."@en-gb ;
+          rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+          rdfs:label "Course"@en-gb ;
+          vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Cuisine
+fo:Cuisine rdf:type owl:Class ;
+           rdfs:comment "A Cuisine is a particular style of food, often based on a region. These classifications are often highly subjective."@en-gb ;
+           rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+           rdfs:label "Cuisine"@en-gb ;
+           vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Diet
+fo:Diet rdf:type owl:Class ;
+        rdfs:comment "A Diet is a way of selecting food that achieves a particular effect, such as eating in way that is pregnancy-friendly or avoiding foods that contain shellfish."@en-gb ;
+        rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+        rdfs:label "Diet"@en-gb ;
+        vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Food
+fo:Food rdf:type owl:Class ;
+        rdfs:comment "A Food is something that can be eaten. It may be a basic food such as salt or it may be the more complex result of another recipe, for example chicken stock. A recipe uses foods as part of ingredients and also produces foods to be eaten."@en-gb ;
+        rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+        rdfs:label "Food"@en-gb ;
+        vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Ingredient
+fo:Ingredient rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/fo/IngredientList
+fo:IngredientList rdf:type owl:Class ;
+                  rdfs:subClassOf rdf:Seq ;
+                  rdfs:comment "An IngredientList is a sequence (rdf:Seq) of ingredients in the order they should be listed in the recipe."@en-gb ;
+                  rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+                  rdfs:label "IngredientList"@en-gb ;
+                  vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Menu
+fo:Menu rdf:type owl:Class ;
+        rdfs:subClassOf fo:Collection ;
+        rdfs:comment "A Menu is a collection of recipes, usually one or more per course, that have been selected to go well together. A Menu may also be related to a particular cuisine or occasion."@en-gb ;
+        rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+        rdfs:label "Menu"@en-gb ;
+        vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Method
+fo:Method rdf:type owl:Class ;
+          rdfs:subClassOf rdf:Seq ;
+          rdfs:comment "A Method is the way in which ingredients are combined, using particular techniques, in order to produce a food. A method is part of a recipe and is also an rdf:Seq."@en-gb ;
+          rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+          rdfs:label "Method"@en-gb ;
+          vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Occasion
+fo:Occasion rdf:type owl:Class ;
+            rdfs:comment "An Occasion is a recognised event or type of event that a particular food may be suitable for. An exmaple of a particular occassion might be Chinese New Year, whereas a more general occassion might a birthday."@en-gb ;
+            rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+            rdfs:label "Occasion"@en-gb ;
+            vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Recipe
+fo:Recipe rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/fo/Season
+fo:Season rdf:type owl:Class ;
+          rdfs:comment "A Season is a period of time that recurs annually during which a food is typically available or at its best."@en-gb ;
+          rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+          rdfs:label "Season"@en-gb ;
+          vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/ShoppingCategory
+fo:ShoppingCategory rdf:type owl:Class ;
+                    rdfs:comment "A Shopping Category is a classification given to a food to indicate where it may be found when shopping."@en-gb ;
+                    rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+                    rdfs:label "ShoppingCategory"@en-gb ;
+                    vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Stage
+fo:Stage rdf:type owl:Class ;
+         rdfs:comment "A Stage is a part of a recipe that may have its own ingredient list and/or method. It allows the different parts of a multi-part recipe to be modelled seperately, yet as part of the same recipe."@en-gb ;
+         rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+         rdfs:label "Stage"@en-gb ;
+         vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/StageSequence
+fo:StageSequence rdf:type owl:Class ;
+                 rdfs:subClassOf rdf:Seq ;
+                 rdfs:comment "Where a recipe has a number of stage, for example where a recipe states 'for the sauce' a stage sequence provides a way to sequence the stages (rdf:Seq) into the desired order."@en-gb ;
+                 rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+                 rdfs:label "StageSequence"@en-gb ;
+                 vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Step
+fo:Step rdf:type owl:Class ;
+        rdfs:comment "A Step is the lowest level of instruction used in a recipe. A sequence of steps form a method."@en-gb ;
+        rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+        rdfs:label "Step"@en-gb ;
+        vs:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Technique
+fo:Technique rdf:type owl:Class ;
+             rdfs:comment "A Technique is a way of working with an ingredient to produce a desired effect, for example, whipping cream."@en-gb ;
+             rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+             rdfs:label "Technique"@en-gb ;
+             vs:term_status "testing" .
+
+
+###  http://www.bbc.co.uk/ontologies/provenance/Ontology
+provenance:Ontology rdf:type owl:Class .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq
+rdf:Seq rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://purl.org/ontology/fo/
+<http://purl.org/ontology/fo/> rdf:type owl:NamedIndividual ,
+                                        provenance:Ontology ;
+                               foaf:maker <http://purl.org/ontology/fo/#andrew> ,
+                                          <http://purl.org/ontology/fo/#oliver> ,
+                                          <http://purl.org/ontology/fo/#philip> ,
+                                          <http://purl.org/ontology/fo/#rija> ,
+                                          <http://purl.org/ontology/fo/#rob> .
+
+
+###  http://purl.org/ontology/fo/Almoco
+fo:Almoco rdf:type owl:NamedIndividual ,
+                   fo:Menu ;
+          fo:dessert fo:Kluay_Buat_Chi ,
+                     fo:Sago ;
+          fo:main_course fo:Chu_Chi_Goong ,
+                         fo:Gaeng_Kua_Goon ,
+                         fo:Gai_Pad_Gra_Pao ,
+                         fo:Gai_Pad_Khing ,
+                         fo:Khao_Pad_Gai ,
+                         fo:Khao_Pad_Goong ;
+          fo:side_dish fo:Tom_Kha_Gai ,
+                       fo:Tom_Kha_Pah ,
+                       fo:Yum_Hed_Shitáki ,
+                       fo:Yum_Woon_Sen_Talay ;
+          fo:starter fo:Por_Pia_Tod ,
+                     fo:Satay_Gai .
+
+
+###  http://purl.org/ontology/fo/Chu_Chi_Goong
+fo:Chu_Chi_Goong rdf:type owl:NamedIndividual ,
+                          fo:Course ,
+                          fo:Recipe ;
+                 fo:ingredients fo:camarao ,
+                                fo:leite_de_coco .
+
+
+###  http://purl.org/ontology/fo/Cogumelos_shitáki
+fo:Cogumelos_shitáki rdf:type owl:NamedIndividual ,
+                              fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/Gaeng_Kua_Goon
+fo:Gaeng_Kua_Goon rdf:type owl:NamedIndividual ,
+                           fo:Course ,
+                           fo:Recipe ;
+                  fo:ingredients fo:ananas ,
+                                 fo:camarao ,
+                                 fo:caril .
+
+
+###  http://purl.org/ontology/fo/Gai_Pad_Gra_Pao
+fo:Gai_Pad_Gra_Pao rdf:type owl:NamedIndividual ,
+                            fo:Course ,
+                            fo:Recipe ;
+                   fo:ingredients fo:folhas_manjericao ,
+                                  fo:frango ,
+                                  fo:malagueta .
+
+
+###  http://purl.org/ontology/fo/Gai_Pad_Khing
+fo:Gai_Pad_Khing rdf:type owl:NamedIndividual ,
+                          fo:Course ,
+                          fo:Recipe ;
+                 fo:ingredients fo:cebola ,
+                                fo:cogumelo ,
+                                fo:frango ,
+                                fo:gengibre .
+
+
+###  http://purl.org/ontology/fo/Glass_noodles
+fo:Glass_noodles rdf:type owl:NamedIndividual ,
+                          fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/Ingredient
+fo:Ingredient rdf:type owl:NamedIndividual ;
+              owl:sameAs v:Ingredient .
+
+
+###  http://purl.org/ontology/fo/Khao_Pad_Gai
+fo:Khao_Pad_Gai rdf:type owl:NamedIndividual ,
+                         fo:Course ,
+                         fo:Recipe ;
+                fo:ingredients fo:arroz ,
+                               fo:cebola ,
+                               fo:frango ,
+                               fo:ovo ,
+                               fo:tomate ;
+                foaf:title "Khao Pad Gai" .
+
+
+###  http://purl.org/ontology/fo/Khao_Pad_Goong
+fo:Khao_Pad_Goong rdf:type owl:NamedIndividual ,
+                           fo:Course ,
+                           fo:Recipe ;
+                  fo:ingredients fo:arroz ,
+                                 fo:camarao ,
+                                 fo:cebola ,
+                                 fo:ovo ,
+                                 fo:tomate ;
+                  foaf:title "Khao Pad Goong" .
+
+
+###  http://purl.org/ontology/fo/Kluay_Buat_Chi
+fo:Kluay_Buat_Chi rdf:type owl:NamedIndividual ,
+                           fo:Course ,
+                           fo:Recipe ;
+                  fo:ingredients fo:acucar ,
+                                 fo:banana ,
+                                 fo:leite_de_coco .
+
+
+###  http://purl.org/ontology/fo/Por_Pia_Tod
+fo:Por_Pia_Tod rdf:type owl:NamedIndividual ,
+                        fo:Course ,
+                        fo:Recipe ;
+               fo:ingredients fo:Rolo_primavera ,
+                              fo:legumes ,
+                              fo:massinhas ,
+                              fo:molho_pimenta-doce ;
+               foaf:title "Por Pia Tod (2 Uni.)" .
+
+
+###  http://purl.org/ontology/fo/Recipe
+fo:Recipe rdf:type owl:NamedIndividual ;
+          owl:sameAs v:Recipe .
+
+
+###  http://purl.org/ontology/fo/Rolo_primavera
+fo:Rolo_primavera rdf:type owl:NamedIndividual ,
+                           fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/Sago
+fo:Sago rdf:type owl:NamedIndividual ,
+                 [ rdf:type owl:Class ;
+                   owl:unionOf ( fo:Course
+                                 fo:Recipe
+                               )
+                 ] ;
+        fo:ingredients fo:leite_de_coco ,
+                       fo:lima ,
+                       fo:tapioca .
+
+
+###  http://purl.org/ontology/fo/Satay_Gai
+fo:Satay_Gai rdf:type owl:NamedIndividual ,
+                      fo:Course ,
+                      fo:Recipe ;
+             fo:ingredients fo:frango ,
+                            fo:molho_de_amendoim ;
+             foaf:title "Satay Gai (5 Uni.)" .
+
+
+###  http://purl.org/ontology/fo/Tom_Kha_Gai
+fo:Tom_Kha_Gai rdf:type owl:NamedIndividual ,
+                        fo:Course ,
+                        fo:Recipe ;
+               fo:ingredients fo:erva_principe ,
+                              fo:frango ,
+                              fo:galanga ,
+                              fo:leite_de_coco ,
+                              fo:sumo_de_limao ;
+               foaf:title "Tom Kha Gai" .
+
+
+###  http://purl.org/ontology/fo/Tom_Kha_Pah
+fo:Tom_Kha_Pah rdf:type owl:NamedIndividual ,
+                        fo:Course ,
+                        fo:Recipe ;
+               fo:ingredients fo:leite_de_coco ,
+                              fo:peixe ;
+               foaf:title "Tom Kha Pah" .
+
+
+###  http://purl.org/ontology/fo/Yum_Hed_Shitáki
+fo:Yum_Hed_Shitáki rdf:type owl:NamedIndividual ,
+                            fo:Course ,
+                            fo:Recipe ;
+                   fo:ingredients fo:Cogumelos_shitáki ;
+                   foaf:title "Yum Hed Shitáki" .
+
+
+###  http://purl.org/ontology/fo/Yum_Woon_Sen_Talay
+fo:Yum_Woon_Sen_Talay rdf:type owl:NamedIndividual ,
+                               fo:Course ,
+                               fo:Recipe ;
+                      fo:ingredients fo:Glass_noodles ,
+                                     fo:marisco ;
+                      foaf:title "Yum Woon Sen Talay" .
+
+
+###  http://purl.org/ontology/fo/acucar
+fo:acucar rdf:type owl:NamedIndividual ,
+                   fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/ananas
+fo:ananas rdf:type owl:NamedIndividual ,
+                   fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/arroz
+fo:arroz rdf:type owl:NamedIndividual ,
+                  fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/banana
+fo:banana rdf:type owl:NamedIndividual ,
+                   fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/camarao
+fo:camarao rdf:type owl:NamedIndividual ,
+                    fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/caril
+fo:caril rdf:type owl:NamedIndividual ,
+                  fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/cebola
+fo:cebola rdf:type owl:NamedIndividual ,
+                   fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/cogumelo
+fo:cogumelo rdf:type owl:NamedIndividual ,
+                     fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/erva_principe
+fo:erva_principe rdf:type owl:NamedIndividual ,
+                          fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/folhas_manjericao
+fo:folhas_manjericao rdf:type owl:NamedIndividual ,
+                              fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/frango
+fo:frango rdf:type owl:NamedIndividual ,
+                   fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/galanga
+fo:galanga rdf:type owl:NamedIndividual ,
+                    fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/gengibre
+fo:gengibre rdf:type owl:NamedIndividual ,
+                     fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/legumes
+fo:legumes rdf:type owl:NamedIndividual ,
+                    fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/leite_de_coco
+fo:leite_de_coco rdf:type owl:NamedIndividual ,
+                          fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/lima
+fo:lima rdf:type owl:NamedIndividual ,
+                 fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/malagueta
+fo:malagueta rdf:type owl:NamedIndividual ,
+                      fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/marisco
+fo:marisco rdf:type owl:NamedIndividual ,
+                    fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/massinhas
+fo:massinhas rdf:type owl:NamedIndividual ,
+                      fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/molho_de_amendoim
+fo:molho_de_amendoim rdf:type owl:NamedIndividual ,
+                              fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/molho_pimenta-doce
+fo:molho_pimenta-doce rdf:type owl:NamedIndividual ,
+                               fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/ovo
+fo:ovo rdf:type owl:NamedIndividual ,
+                fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/peixe
+fo:peixe rdf:type owl:NamedIndividual ,
+                  fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/sumo_de_limao
+fo:sumo_de_limao rdf:type owl:NamedIndividual ,
+                          fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/tapioca
+fo:tapioca rdf:type owl:NamedIndividual ,
+                    fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/tomate
+fo:tomate rdf:type owl:NamedIndividual ,
+                   fo:Ingredient .
+
+
+###  http://purl.org/ontology/fo/#andrew
+<http://purl.org/ontology/fo/#andrew> rdf:type owl:NamedIndividual ,
+                                               foaf:Person ;
+                                      foaf:name "Andrew Robinson" .
+
+
+###  http://purl.org/ontology/fo/#oliver
+<http://purl.org/ontology/fo/#oliver> rdf:type owl:NamedIndividual ,
+                                               foaf:Person ;
+                                      foaf:name "Oliver Bartlett" .
+
+
+###  http://purl.org/ontology/fo/#philip
+<http://purl.org/ontology/fo/#philip> rdf:type owl:NamedIndividual ,
+                                               foaf:Person ;
+                                      foaf:name "Philip Lamond" .
+
+
+###  http://purl.org/ontology/fo/#rija
+<http://purl.org/ontology/fo/#rija> rdf:type owl:NamedIndividual ,
+                                             foaf:Person ;
+                                    foaf:name "Rija Menage" .
+
+
+###  http://purl.org/ontology/fo/#rob
+<http://purl.org/ontology/fo/#rob> rdf:type owl:NamedIndividual ,
+                                            foaf:Person ;
+                                   foaf:name "Rob Styles" .
+
+
+###  http://rdf.data-vocabulary.org/#Ingredient
+v:Ingredient rdf:type owl:NamedIndividual .
+
+
+###  http://rdf.data-vocabulary.org/#Recipe
+v:Recipe rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+fo:Ingredient rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+              rdfs:comment "An Ingredient is the combination of a quantity and a food, giving the amount of something that should be used in the recipe."@en-gb ;
+              vs:term_status "testing" ;
+              rdfs:label "Ingredient"@en-gb .
+
+
+fo:Recipe vs:term_status "testing" ;
+          rdfs:isDefinedBy <http://purl.org/ontology/fo/> ;
+          rdfs:label "Recipe"@en-gb ;
+          rdfs:comment "A Recipe is a combination of ingredients and a method, created by a chef, that produces a food."@en-gb .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

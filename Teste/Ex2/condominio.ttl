@@ -1,0 +1,812 @@
+@prefix : <http://www.tartesdajulia.com/ontologies/2020/condominio#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.tartesdajulia.com/ontologies/2020/condominio> .
+
+<http://www.tartesdajulia.com/ontologies/2020/condominio> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#eDePessoa
+:eDePessoa rdf:type owl:ObjectProperty ;
+           owl:inverseOf :temFracao ;
+           rdfs:domain :Fracao ;
+           rdfs:range :Pessoa .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#eEntrada
+:eEntrada rdf:type owl:ObjectProperty ;
+          owl:inverseOf :temEntrada ;
+          rdfs:domain :Livro ;
+          rdfs:range :Entrada .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#eFracao
+:eFracao rdf:type owl:ObjectProperty ;
+         owl:inverseOf :fracaoDeEspaco .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#foiPago
+:foiPago rdf:type owl:ObjectProperty ;
+         owl:inverseOf :pagou .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#fracaoDeEspaco
+:fracaoDeEspaco rdf:type owl:ObjectProperty .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#pagou
+:pagou rdf:type owl:ObjectProperty ;
+       rdfs:domain :Fracao ;
+       rdfs:range :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#temEntrada
+:temEntrada rdf:type owl:ObjectProperty .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#temFracao
+:temFracao rdf:type owl:ObjectProperty ;
+           rdfs:domain :Pessoa ;
+           rdfs:range :Fracao .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#data
+:data rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Entrada .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#descricao
+:descricao rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Entrada .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#email
+:email rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Pessoa .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#entidade
+:entidade rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Entrada .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#nome
+:nome rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Pessoa .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#numero
+:numero rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Entrada .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#origem
+:origem rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Entrada .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#telefone
+:telefone rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Pessoa .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#tipo
+:tipo rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Entrada .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#valor
+:valor rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Entrada ,
+                   :Fracao .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Apartamento
+:Apartamento rdf:type owl:Class ;
+             rdfs:subClassOf :Espaco .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Condominio
+:Condominio rdf:type owl:Class .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Entrada
+:Entrada rdf:type owl:Class .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Espaco
+:Espaco rdf:type owl:Class .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Fracao
+:Fracao rdf:type owl:Class .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Garagem
+:Garagem rdf:type owl:Class ;
+         rdfs:subClassOf :Espaco .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Livro
+:Livro rdf:type owl:Class .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Loja
+:Loja rdf:type owl:Class ;
+      rdfs:subClassOf :Espaco .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#MapaPagamento
+:MapaPagamento rdf:type owl:Class .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Mes
+:Mes rdf:type owl:Class .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Pessoa
+:Pessoa rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#A
+:A rdf:type owl:NamedIndividual ,
+            :Fracao .
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Abr
+:Abr rdf:type owl:NamedIndividual ,
+              :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Ago
+:Ago rdf:type owl:NamedIndividual ,
+              :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Dez
+:Dez rdf:type owl:NamedIndividual ,
+              :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#F
+:F rdf:type owl:NamedIndividual ,
+            :Fracao ;
+   :pagou :Abr ,
+          :Fev ,
+          :Jan ,
+          :Mar .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Fev
+:Fev rdf:type owl:NamedIndividual ,
+              :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#G
+:G rdf:type owl:NamedIndividual ,
+            :Fracao ;
+                  :pagou   :Fev ,
+          :Jan ,
+          :Mar .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#H
+:H rdf:type owl:NamedIndividual ,
+            :Fracao .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#I
+:I rdf:type owl:NamedIndividual ,
+            :Fracao ;
+      :pagou :Abr ,
+          :Ago ,
+          :Dez ,
+          :Fev ,
+          :Jan ,
+          :Jul ,
+          :Jun ,
+          :Mai ,
+          :Mar ,
+          :Nov ,
+          :Out ,
+          :Set .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#J
+:J rdf:type owl:NamedIndividual ,
+            :Fracao .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Jan
+:Jan rdf:type owl:NamedIndividual ,
+              :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Jul
+:Jul rdf:type owl:NamedIndividual ,
+              :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Jun
+:Jun rdf:type owl:NamedIndividual ,
+              :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#L
+:L rdf:type owl:NamedIndividual ,
+            :Fracao ;
+                  :pagou :Abr ,
+          :Ago ,
+          :Dez ,
+          :Fev ,
+          :Jan ,
+          :Jul ,
+          :Jun ,
+          :Mai ,
+          :Mar ,
+          :Nov ,
+          :Out ,
+          :Set .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Livro2020
+:Livro2020 rdf:type owl:NamedIndividual ,
+                    :Livro ;
+           :temEntrada <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/001> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/002> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/003> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/004> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/005> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/006> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/007> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/008> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/009> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/010> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/011> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/012> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/013> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/014> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/015> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/016> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/017> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/018> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/019> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/020> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/021> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/022> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/023> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/024> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/025> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/026> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/027> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/028> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/029> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/030> ,
+                       <http://www.tartesdajulia.com/ontologies/2020/condominio#2020/031> .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Loja
+:Loja rdf:type owl:NamedIndividual ,
+               :Loja ;
+      :eFracao :A .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#M
+:M rdf:type owl:NamedIndividual ,
+            :Fracao ;
+                  :pagou :Abr ,
+          :Fev ,
+          :Jan ,
+          :Mai ,
+          :Mar .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Mai
+:Mai rdf:type owl:NamedIndividual ,
+              :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#MapaPagamento2020
+:MapaPagamento2020 rdf:type owl:NamedIndividual ,
+                            :MapaPagamento .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Mar
+:Mar rdf:type owl:NamedIndividual ,
+              :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#N
+:N rdf:type owl:NamedIndividual ,
+            :Fracao ;
+      :pagou :Abr ,
+          :Fev ,
+          :Jan ,
+          :Mar .
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Nov
+:Nov rdf:type owl:NamedIndividual ,
+              :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#O
+:O rdf:type owl:NamedIndividual ,
+            :Fracao ;
+      :pagou :Abr ,
+          :Ago ,
+          :Fev ,
+          :Jan ,
+          :Jul ,
+          :Jun ,
+          :Mai ,
+          :Mar .
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Out
+:Out rdf:type owl:NamedIndividual ,
+              :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#P
+:P rdf:type owl:NamedIndividual ,
+            :Fracao ;
+            :pagou :Abr ,
+          :Fev ,
+          :Jan ,
+          :Mar .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Q
+:Q rdf:type owl:NamedIndividual ,
+            :Fracao ;
+                  :pagou :Abr ,
+          :Fev ,
+          :Jan ,
+          :Mar .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#R
+:R rdf:type owl:NamedIndividual ,
+            :Fracao .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#Set
+:Set rdf:type owl:NamedIndividual ,
+              :Mes .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#condominioA
+:condominioA rdf:type owl:NamedIndividual ,
+                      :Condominio .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#1Dto
+<http://www.tartesdajulia.com/ontologies/2020/condominio#1Dto> rdf:type owl:NamedIndividual ,
+                                                                        :Apartamento ;
+                                                               :eFracao :F .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#1Esq
+<http://www.tartesdajulia.com/ontologies/2020/condominio#1Esq> rdf:type owl:NamedIndividual ,
+                                                                        :Apartamento ;
+                                                               :eFracao :G .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2Dto
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2Dto> rdf:type owl:NamedIndividual ,
+                                                                        :Apartamento ;
+                                                               :eFracao :H .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/001
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/001> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-01-04" ;
+                                                                   :descricao "Manutenção da conta" ;
+                                                                   :entidade "CGD" ;
+                                                                   :numero "2020/001" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 7.28 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/002
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/002> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-01-06" ;
+                                                                   :descricao "Janeiro" ;
+                                                                   :entidade "7º Esq" ;
+                                                                   :numero "2020/002" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 64.00 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/003
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/003> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-01-06" ;
+                                                                   :descricao "Abril a Dezembro de 2019" ;
+                                                                   :entidade "2º Dto" ;
+                                                                   :numero "2020/003" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 406.62 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/004
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/004> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-01-08" ;
+                                                                   :descricao "Luz" ;
+                                                                   :entidade "EDP" ;
+                                                                   :numero "2020/004" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 222.65 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/005
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/005> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-01-16" ;
+                                                                   :descricao "Janeiro" ;
+                                                                   :entidade "7º Dto" ;
+                                                                   :numero "2020/005" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 45.18 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/006
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/006> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-02-01" ;
+                                                                   :descricao "Manutenção da conta" ;
+                                                                   :entidade "CGD" ;
+                                                                   :numero "2020/006" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 7.28 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/007
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/007> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-02-04" ;
+                                                                   :descricao "Fevereiro" ;
+                                                                   :entidade "5º Esq" ;
+                                                                   :numero "2020/007" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 64.00 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/008
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/008> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-02-06" ;
+                                                                   :descricao "Fevereiro" ;
+                                                                   :entidade "7º Esq" ;
+                                                                   :numero "2020/008" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 64.00 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/009
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/009> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-01-20" ;
+                                                                   :descricao "Manutenção dos elevadores: 1º trimestre" ;
+                                                                   :entidade "Kone" ;
+                                                                   :numero "2020/009" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 439.77 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/010
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/010> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-02-12" ;
+                                                                   :descricao "Janeiro, Fevereiro e Março" ;
+                                                                   :entidade "1º e 3º Esq" ;
+                                                                   :numero "2020/010" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 384.00 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/011
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/011> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-02-20" ;
+                                                                   :descricao "Fevereiro" ;
+                                                                   :entidade "7º Dto" ;
+                                                                   :numero "2020/011" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 45.18 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/012
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/012> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-02-24" ;
+                                                                   :descricao "Concerto do trinco da porta" ;
+                                                                   :entidade "Serralheiro" ;
+                                                                   :numero "2020/012" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 20.00 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/013
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/013> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-02-24" ;
+                                                                   :descricao "Inspeção dos elevadores" ;
+                                                                   :entidade "CMB" ;
+                                                                   :numero "2020/013" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 174.30 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/014
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/014> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-02-24" ;
+                                                                   :descricao "Acertos: Janeiro, Fevereiro, Março, Abril e 13.58 de Maio" ;
+                                                                   :entidade "1º Dto" ;
+                                                                   :numero "2020/014" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 194.30 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/015
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/015> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-03-11" ;
+                                                                   :descricao "Janeiro a Junho" ;
+                                                                   :entidade "5º Dto" ;
+                                                                   :numero "2020/015" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 271.08 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/016
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/016> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-03-11" ;
+                                                                   :descricao "Reparação das fachadas" ;
+                                                                   :entidade "PluriRapel" ;
+                                                                   :numero "2020/016" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 1655.00 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/017
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/017> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-02-26" ;
+                                                                   :descricao "Março" ;
+                                                                   :entidade "5º Esq" ;
+                                                                   :numero "2020/017" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 64.00 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/018
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/018> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-02-29" ;
+                                                                   :descricao "Janeiro a Dezembro" ;
+                                                                   :entidade "3º Dto" ;
+                                                                   :numero "2020/018" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 542.16 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/019
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/019> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-03-04" ;
+                                                                   :descricao "Luz" ;
+                                                                   :entidade "EDP" ;
+                                                                   :numero "2020/019" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 236.59 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/020
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/020> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-03-06" ;
+                                                                   :descricao "Março" ;
+                                                                   :entidade "7º Esq" ;
+                                                                   :numero "2020/020" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 64.00 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/021
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/021> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-03-07" ;
+                                                                   :descricao "Manutenção da conta" ;
+                                                                   :entidade "CGD" ;
+                                                                   :numero "2020/021" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 7.28 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/022
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/022> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-03-15" ;
+                                                                   :descricao "Março" ;
+                                                                   :entidade "7º Dto" ;
+                                                                   :numero "2020/022" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 45.18 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/023
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/023> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-03-30" ;
+                                                                   :descricao "Abril " ;
+                                                                   :entidade "5º Esq" ;
+                                                                   :numero "2020/023" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 64.00 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/024
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/024> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-04-04" ;
+                                                                   :descricao "Manutenção da conta" ;
+                                                                   :entidade "CGD" ;
+                                                                   :numero "2020/024" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 7.28 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/025
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/025> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-04-06" ;
+                                                                   :descricao "Abril" ;
+                                                                   :entidade "7º Esq" ;
+                                                                   :numero "2020/025" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 64.00 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/026
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/026> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-04-07" ;
+                                                                   :descricao "Abril a Agosto" ;
+                                                                   :entidade "6º Dto" ;
+                                                                   :numero "2020/026" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 225.90 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/027
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/027> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-04-14" ;
+                                                                   :descricao "Abril" ;
+                                                                   :entidade "7º Dto" ;
+                                                                   :numero "2020/027" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 45.18 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/028
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/028> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-04-15" ;
+                                                                   :descricao "Luz Comum" ;
+                                                                   :entidade "Vizinhos" ;
+                                                                   :numero "2020/028" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 207.98 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/029
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/029> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-04-15" ;
+                                                                   :descricao "Limpeza 2020" ;
+                                                                   :entidade "Limpeza" ;
+                                                                   :numero "2020/029" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 1080.00 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/030
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/030> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-04-15" ;
+                                                                   :descricao "Janeiro a Dezembro" ;
+                                                                   :entidade "4º Dto" ;
+                                                                   :numero "2020/030" ;
+                                                                   :tipo "Receita" ;
+                                                                   :valor 542.16 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#2020/031
+<http://www.tartesdajulia.com/ontologies/2020/condominio#2020/031> rdf:type owl:NamedIndividual ,
+                                                                            :Entrada ;
+                                                                   :data "2020-04-01" ;
+                                                                   :descricao "Manutenção dos elevadores: 2º trimestre" ;
+                                                                   :entidade "Kone" ;
+                                                                   :numero "2020/031" ;
+                                                                   :tipo "Despesa" ;
+                                                                   :valor 439.77 .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#3Dto
+<http://www.tartesdajulia.com/ontologies/2020/condominio#3Dto> rdf:type owl:NamedIndividual ,
+                                                                        :Apartamento ;
+                                                               :eFracao :I .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#3Esq
+<http://www.tartesdajulia.com/ontologies/2020/condominio#3Esq> rdf:type owl:NamedIndividual ,
+                                                                        :Apartamento ;
+                                                               :eFracao :J .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#4Dto
+<http://www.tartesdajulia.com/ontologies/2020/condominio#4Dto> rdf:type owl:NamedIndividual ,
+                                                                        :Apartamento ;
+                                                               :eFracao :L .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#5Dto
+<http://www.tartesdajulia.com/ontologies/2020/condominio#5Dto> rdf:type owl:NamedIndividual ,
+                                                                        :Apartamento ;
+                                                               :eFracao :M .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#5Esq
+<http://www.tartesdajulia.com/ontologies/2020/condominio#5Esq> rdf:type owl:NamedIndividual ,
+                                                                        :Apartamento ;
+                                                               :eFracao :L .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#6Dto
+<http://www.tartesdajulia.com/ontologies/2020/condominio#6Dto> rdf:type owl:NamedIndividual ,
+                                                                        :Apartamento ;
+                                                               :eFracao :O .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#7Dto
+<http://www.tartesdajulia.com/ontologies/2020/condominio#7Dto> rdf:type owl:NamedIndividual ,
+                                                                        :Apartamento ;
+                                                               :eFracao :P .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#7Esq
+<http://www.tartesdajulia.com/ontologies/2020/condominio#7Esq> rdf:type owl:NamedIndividual ,
+                                                                        :Apartamento ;
+                                                               :eFracao :Q .
+
+
+###  http://www.tartesdajulia.com/ontologies/2020/condominio#8Dto
+<http://www.tartesdajulia.com/ontologies/2020/condominio#8Dto> rdf:type owl:NamedIndividual ,
+                                                                        :Apartamento ;
+                                                               :eFracao :R .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

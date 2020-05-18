@@ -1,0 +1,72 @@
+
+
+
+    Tio, tia, sobrinho e sobrinha.
+construct {
+    ?sobrinho :temTio ?tio.
+}	
+ where {
+	?tio a :Pessoa .
+    ?sobrinho :temProgenitor ?a.
+    ?a :temProgenitor ?c.
+    ?c :eProgenitorDe ?tio.
+    filter(?a != ?tio)
+}
+	
+	
+    Primo e prima.
+	
+	construct {
+ ?primo :temPrimo ?sobrinho.
+} where {
+	?tio a :Pessoa .
+    ?sobrinho :temProgenitor ?a.
+    ?a :temProgenitor ?c.
+    ?c :eProgenitorDe ?tio.
+    ?tio :eProgenitorDe ?primo 
+    filter(?a != ?tio)
+}
+	
+    Avós e netos.
+	
+	construct {
+ ?neto :temAvo ?avo.
+} where {
+	?neto a :Pessoa.
+    ?neto :temProgenitor ?prog.
+    ?prof :temProgenitor ?avo.
+}
+
+	
+    Irmão e irmã.
+	
+	construct {
+ ?irmao :temIrmao ?irma.
+} where {
+	?irmao :temProgenitor ?prog.
+    ?prog :eProgenitorDe ?irma.
+    filter(?irmao != ?irma)
+}
+
+	
+    Meio-irmão e meia-irmã.
+	
+	construct {
+ ?irmao :temMeioIrmao ?meiairma.
+} where {
+	?irmao :temPai ?pai.
+    ?pai :eProgenitorDe ?meiairma.
+    ?irmao :temMae ?mae.
+	?meiairma :temMae ?mae2
+    filter(?mae != ?mae2)
+}
+
+	construct {
+ ?irmao :temMeioIrmao ?meiairma.
+} where {
+	?irmao :temMae ?mae.
+    ?mae :eProgenitorDe ?meiairma.
+    ?irmao :temPai ?pai.
+	?meiairma :temPai ?pai2
+    filter(?pai != ?pai2)
+}

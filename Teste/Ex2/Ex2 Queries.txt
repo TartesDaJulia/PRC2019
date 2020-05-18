@@ -1,0 +1,36 @@
+Que entidades (receitas e despesas) estão referenciadas na ontologia?
+
+select * where { 
+	?s :entidade ?o .
+}
+
+Que frações não pagaram o mês de Abril de 2020?
+
+select ?frac where {
+	?frac a :Fracao.
+   FILTER(
+			!EXISTS {
+				?frac :pagou :Abr .
+			}
+		)
+}
+
+Para as despesas, qual o montante por entidade já dispendido?
+
+
+
+Qual a receita líquida que se pode concluir do mapa de pagamento (contando apenas as mensalidades pagas)?
+
+select  (SUM(?valor)as ?sum)WHERE{
+     ?despesa :tipo "Receita".
+    ?despesa :entidade ?ent.
+    ?despesa :valor ?valor.
+}
+
+Resultado: 3194.94
+
+
+Do mapa de pagamento, qual o montante pago por cada uma das frações?
+
+
+
